@@ -375,6 +375,90 @@ select {
   transform: translate(-50%, -50%) scale(0.6);
 }
 
+.court-portraits {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 700ms ease;
+}
+
+.birthday-stage.portal-open .court-portraits {
+  opacity: 1;
+}
+
+.birthday-stage[data-active-panel="3"] .court-portraits {
+  opacity: 0;
+}
+
+.court-portrait {
+  position: absolute;
+  top: 50%;
+  width: min(14vw, 172px);
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 238, 213, 0.24);
+  background: rgba(255, 248, 241, 0.18);
+  box-shadow:
+    0 24px 54px rgba(89, 54, 70, 0.2),
+    inset 0 0 24px rgba(255, 255, 255, 0.14);
+  transform: translateY(-50%);
+}
+
+.court-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(248, 236, 218, 0.1), rgba(20, 14, 30, 0.22));
+}
+
+.court-portrait img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.court-portrait-left {
+  left: clamp(4px, 1.4vw, 18px);
+}
+
+.court-portrait-right {
+  right: clamp(4px, 1.4vw, 18px);
+}
+
+.sound-toggle {
+  appearance: none;
+  position: absolute;
+  top: calc(14px + env(safe-area-inset-top));
+  right: 14px;
+  z-index: 11;
+  border: 1px solid rgba(255, 241, 223, 0.28);
+  border-radius: 999px;
+  padding: 8px 14px;
+  color: var(--cream);
+  background: linear-gradient(140deg, rgba(69, 36, 56, 0.78), rgba(43, 26, 50, 0.7));
+  box-shadow: 0 12px 30px rgba(22, 10, 28, 0.28);
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 320ms ease;
+}
+
+.sound-toggle:hover,
+.sound-toggle:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(22, 10, 28, 0.34);
+  outline: none;
+}
+
+.birthday-stage.is-locked .sound-toggle {
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+}
+
 .shell {
   position: relative;
   z-index: 4;
@@ -1502,6 +1586,27 @@ h1 span {
     width: 92px;
     height: 122px;
   }
+
+  .court-portrait {
+    width: min(12vw, 120px);
+    top: 48%;
+    opacity: 0.86;
+  }
+
+  .court-portrait-left {
+    left: 2px;
+  }
+
+  .court-portrait-right {
+    right: 2px;
+  }
+
+  .sound-toggle {
+    top: calc(10px + env(safe-area-inset-top));
+    right: 10px;
+    padding: 7px 12px;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1572,6 +1677,30 @@ h1 span {
     top: 40%;
     width: min(320px, 82vw);
     border-radius: 22px;
+  }
+
+  .court-portrait {
+    top: 22%;
+    width: 72px;
+    opacity: 0.72;
+    box-shadow:
+      0 14px 30px rgba(89, 54, 70, 0.22),
+      inset 0 0 18px rgba(255, 255, 255, 0.12);
+  }
+
+  .court-portrait-left {
+    left: 4px;
+  }
+
+  .court-portrait-right {
+    right: 4px;
+  }
+
+  .sound-toggle {
+    top: calc(8px + env(safe-area-inset-top));
+    right: 8px;
+    padding: 6px 10px;
+    font-size: 0.82rem;
   }
 
   .attendant-cameo::after {

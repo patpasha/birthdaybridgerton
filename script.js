@@ -11,6 +11,8 @@ const locationStatus = document.getElementById("location-status");
 const celebrateButton = document.getElementById("celebrate-button");
 const revealPanel = document.querySelector(".reveal-panel");
 const reunionPhotoWrap = document.querySelector(".reunion-photo-wrap");
+const portalMusic = document.getElementById("portal-music");
+const soundToggle = document.getElementById("sound-toggle");
 const stage = document.querySelector(".birthday-stage");
 const introPanel = document.querySelector(".intro-panel");
 const portalButton = document.getElementById("portal-button");
@@ -51,11 +53,40 @@ function restartIntroConstellation() {
   introPanel.classList.add("is-animating");
 }
 
+function startPortalMusic() {
+  if (!portalMusic) {
+    return;
+  }
+
+  portalMusic.volume = 0.6;
+  const playPromise = portalMusic.play();
+  if (playPromise && typeof playPromise.catch === "function") {
+    playPromise.catch(() => {});
+  }
+
+  updateSoundToggle();
+}
+
+function updateSoundToggle() {
+  if (!soundToggle || !portalMusic) {
+    return;
+  }
+
+  const isMuted = portalMusic.muted;
+  soundToggle.textContent = isMuted ? "Activer le son" : "Couper le son";
+  soundToggle.setAttribute("aria-pressed", String(isMuted));
+  soundToggle.setAttribute(
+    "aria-label",
+    isMuted ? "Activer la musique d'ambiance" : "Couper la musique d'ambiance",
+  );
+}
+
 function openPortal() {
   if (!stage || stage.classList.contains("portal-open")) {
     return;
   }
 
+  startPortalMusic();
   stage.classList.add("portal-open");
   stage.classList.remove("is-locked");
   restartIntroConstellation();
@@ -67,6 +98,7 @@ function openPortal() {
 
 function showPanel(index) {
   activePanel = index;
+  stage?.setAttribute("data-active-panel", String(index));
   panels.forEach((panel, panelIndex) => {
     panel.classList.toggle("is-active", panelIndex === index);
   });
@@ -474,6 +506,23 @@ locationButtons.forEach((button) => {
   });
 });
 
+soundToggle?.addEventListener("click", (event) => {
+  handleBurstClick(event);
+
+  if (!portalMusic) {
+    return;
+  }
+
+  if (portalMusic.paused) {
+    portalMusic.muted = false;
+    startPortalMusic();
+  } else {
+    portalMusic.muted = !portalMusic.muted;
+  }
+
+  updateSoundToggle();
+});
+
 celebrateButton?.addEventListener("click", (event) => {
   const point = getEventPoint(event, celebrateButton);
   const scale = getCelebrationScale();
@@ -522,5 +571,6 @@ window.addEventListener("resize", () => {
 });
 
 buildPetals();
+updateSoundToggle();
 updateClueState();
 showPanel(activePanel);
