@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="birthday-stage">
+    <header class="birthday-stage is-locked">
       <div class="sky sky-a"></div>
       <div class="sky sky-b"></div>
       <div class="stars"></div>
@@ -31,23 +31,86 @@
         aria-hidden="true"
       ></div>
 
+      <section class="entry-portal" id="entry-portal" aria-label="Portail d'entrée Bridgerton">
+        <div class="portal-attendants" aria-hidden="true">
+          <article class="attendant-card attendant-1">
+            <div class="attendant-cameo" data-character="D"></div>
+            <p>Daphne</p>
+          </article>
+          <article class="attendant-card attendant-2">
+            <div class="attendant-cameo" data-character="S"></div>
+            <p>Simon</p>
+          </article>
+          <article class="attendant-card attendant-3">
+            <div class="attendant-cameo" data-character="A"></div>
+            <p>Anthony</p>
+          </article>
+          <article class="attendant-card attendant-4">
+            <div class="attendant-cameo" data-character="K"></div>
+            <p>Kate</p>
+          </article>
+          <article class="attendant-card attendant-5">
+            <div class="attendant-cameo" data-character="P"></div>
+            <p>Penelope</p>
+          </article>
+          <article class="attendant-card attendant-6">
+            <div class="attendant-cameo" data-character="C"></div>
+            <p>Colin</p>
+          </article>
+          <article class="attendant-card attendant-7">
+            <div class="attendant-cameo cameo-patt has-photo" data-character="Pa" style="--portrait:url('./assets/portal/patt.png')"></div>
+            <p>Patt</p>
+          </article>
+          <article class="attendant-card attendant-8">
+            <div class="attendant-cameo cameo-stella has-photo" data-character="St" style="--portrait:url('./assets/portal/stella.png')"></div>
+            <p>Stella</p>
+          </article>
+        </div>
+
+        <div class="portal-shell">
+          <p class="portal-kicker">Invitation au grand bal de Stella</p>
+          <div class="portal-doorframe" id="portal-doorframe" role="button" tabindex="0" aria-label="Ouvrir le portail">
+            <div class="portal-doors">
+              <div class="portal-door portal-door-left">
+                <span class="door-handle"></span>
+              </div>
+              <div class="portal-door portal-door-right">
+                <span class="door-handle"></span>
+              </div>
+              <div class="portal-seal">S</div>
+            </div>
+          </div>
+          <div class="portal-copy">
+            <h2>Ouvre le portail de Bridgerton</h2>
+            <p>
+              Toute la haute société attend Stella. Il suffit d'ouvrir les portes
+              du palais pour entrer dans cette histoire d'anniversaire.
+            </p>
+          </div>
+          <button class="btn btn-primary portal-button" id="portal-button">
+            Ouvrir le portail
+          </button>
+        </div>
+      </section>
+
       <div class="shell">
         <p class="date-pill">
           4 mars • Saison des Poissons • Anniversaire de Stella
         </p>
 
         <section class="intro-panel panel is-active" data-panel="0">
-          <div class="eyebrow">Gazette de Lady Cosmos</div>
+          <div class="eyebrow">Chronique de milady Stella</div>
           <h1>
             Joyeux anniversaire,
             <span>Stella</span>
           </h1>
           <p class="lede">
-            Ma zimboulette, c'est ton m'anniversaire et la haute société a
-            décrété qu'aucune étoile et aucune fleur ne pouvaient rivaliser avec
-            toi. Mini Jannah m'a volé la vedette au bureau mais moi je viens
-            avec le wawawakidiwa de Lady Whistledown qui t'invite à entrer dans
-            la serre royale !
+            Ma zimboula, en ce jour de ton m'anniversaire, la haute société
+            s'accorde enfin sur une vérité incontestable: aucune étoile, aucune
+            fleur et aucune débutante ne sauraient rivaliser avec toi. Mini
+            Jannah a volé la vedette à Scarborough, certes, mais je m'en viens accompagné de
+            Lady de Whistledown, du wawawakidiwa et une invitation officielle au plus charmant des
+            bals.
           </p>
 
           <div class="constellation-card">
@@ -86,9 +149,8 @@
             <div>
               <p class="card-title">Profil astral</p>
               <p class="card-copy">
-                Tendre, rêveuse, magnétique. Une héroïne Bridgerton égarée dans
-                une nébuleuse fleurie, ce qui explique beaucoup de choses. Love
-                u
+                Tendre, rêveuse, magnétique. Le genre de jeune femme qu'une
+                chronique mondaine appellerait la perle rare de la saison.
               </p>
             </div>
           </div>
@@ -104,19 +166,19 @@
         </section>
 
         <section class="story-panel panel" data-panel="1">
-          <div class="eyebrow">Billet de Lady Whistledown cosmique</div>
+          <div class="eyebrow">Billet de Lady Whistledown</div>
           <h2>Bienvenue ma très chère Stella,</h2>
           <p class="lede">
-            Il court dans la haute société une rumeur délicieuse: une certaine
-            Stella, née un 4 mars sous la bannière des Poissons, aurait reçu
-            pour son anniversaire deux présents concoctés de façon parfaitement
-            céleste et divinatoire par votre zimboula malgré la distance.
+            Il se murmure dans les salons les plus distingués qu'une certaine
+            Stella, née un 4 mars sous l'heureuse bannière des Poissons, serait
+            l'héroïne d'une surprise ourdie avec une dévotion tout à fait
+            scandaleuse.
           </p>
           <p class="panel-copy">
-            Votre humble chroniqueuse ne saurait dévoiler ces secrets si vite.
-            Il faudra mériter l'indice final, traverser cette serre étoilée,
-            puis retrouver le lieu où l'on a mis ces merveilles à l'abri pour
-            les découvrir.
+            Votre humble serviteur ne saurait toutefois dévoiler les présents si
+            promptement. Il faudra suivre les indices, soutenir le regard des
+            constellations et trouver le lieu où ces merveilles attendent leur
+            duchesse.
           </p>
 
           <div class="nickname-row" aria-label="Surnoms affectueux">
@@ -131,15 +193,15 @@
             <article class="teaser-card">
               <p class="card-title">Promesse n°1</p>
               <p class="card-copy">
-                Le premier présent a le pouvoir de faire tomber la nuit étoilée
-                dans les moments sombres.
+                Le premier présent a le pouvoir de faire descendre le ciel dans
+                une pièce comme on entrouvre un bal sous les étoiles.
               </p>
             </article>
             <article class="teaser-card">
               <p class="card-title">Promesse n°2</p>
               <p class="card-copy">
-                Le second s'annonce sous une robe dorée, mondaine et
-                terriblement gourmande.
+                Le second se présente dans une robe dorée, avec toute l'insolence
+                délicieuse d'une tentation mondaine.
               </p>
             </article>
           </div>
@@ -153,10 +215,11 @@
         </section>
 
         <section class="hunt-panel panel" data-panel="2">
-          <div class="eyebrow">Chasse au trésor</div>
+          <div class="eyebrow">Jeu de salon</div>
           <h2>Déchiffre les indices de la duchesse des étoiles</h2>
           <p class="lede">
-            Trois indices, un seul bon lieu, et aucun spoiler sur les cadeaux.
+            Trois indices, un seul bon lieu, et pas le moindre scandale dévoilé
+            avant l'heure.
           </p>
 
           <div class="clue-grid">
@@ -164,22 +227,24 @@
               <span class="clue-index">I</span>
               <strong>Indice astral</strong>
               <span>
-                Le premier présent fait entrer la nuit étoilée dans une pièce.
+                Le premier présent invite la nuit étoilée à prendre ses quartiers
+                dans une pièce bien trop sage.
               </span>
             </button>
             <button class="clue-card" data-clue="2">
               <span class="clue-index">II</span>
               <strong>Indice gourmand</strong>
               <span>
-                Le second se croque, fond, et adore se montrer en doré.
+                Le second se croque, se savoure et parade volontiers dans sa robe
+                dorée.
               </span>
             </button>
             <button class="clue-card" data-clue="3">
               <span class="clue-index">III</span>
               <strong>Indice de palais</strong>
               <span>
-                Le trésor n'attend pas paisiblement dans l'appartement mais dans
-                une jungle amazonienne.
+                Le trésor ne sommeille point dans votre quartier, mais dans un
+                lieu autrement plus officiel.
               </span>
             </button>
           </div>
@@ -200,16 +265,16 @@
             <p class="card-title">Où faut-il aller ?</p>
             <div class="location-grid">
               <button class="location-card" data-location="salon">
-                <strong>Salon?</strong>
-                <span>Peut-être trop évident?</span>
+                <strong>Le salon ?</strong>
+                <span>Un choix peu prévisible</span>
               </button>
               <button class="location-card" data-location="terrasse">
-                <strong>Terrasse?</strong>
-                <span>Trop exposée?</span>
+                <strong>La terrasse ?</strong>
+                <span>Charmante, un poil trop exposée</span>
               </button>
               <button class="location-card" data-location="conciergerie">
-                <strong>A l'accueil?</strong>
-                <span>Peut-être le bon pari?</span>
+                <strong>À l'accueil ?</strong>
+                <span>Un pari tout à fait distingué</span>
               </button>
             </div>
             <p id="location-status" class="location-status">
@@ -229,19 +294,22 @@
           <div class="eyebrow">Annonce officielle</div>
           <h2>Ton trésor t'attend à l'accueil !</h2>
           <p class="lede">
-            Lady Pitichat: Je suis loin de toi aujourd'hui mais tu es toujours à côté de mon petit coeur. 
-            Je pense très fort à toi et j'aurai aimé pouvoir me réveiller et te serrer dans mes bras. 
-            C'est pour bientôt, je t'aime 3x1000 ❤️‍🔥!
+            Monsieur Poutchatcha souhaite qu'il soit inscrit noir sur ivoire que,
+            malgré la distance, Lady Pitichat demeure la souveraine incontestée de son
+            coeur. Les présents attendent à l'accueil, mais les bras, les bisous
+            et tout le reste suivront très bientôt. Je t'aime mon am.
           </p>
 
           <div class="love-note">
             <p>
-              Ma patata, ma ninette, ma wawawakidiwa: tu me manques fort et tu
-              rends mes journées plus belles, même à distance.
+              Ma patata, ma ninette, ma wawawakidiwa, tu rends les jours plus
+              doux, les soirs plus beaux et même la distance un peu moins
+              insolente.
             </p>
             <p>
-              Va chercher ton trésor, pense à moi en souriant, et garde un peu
-              de place pour tous les bisous que je te dois.
+              Va chercher ton trésor comme une duchesse entrant au bal et garde
+              une place d'honneur pour tous les bisous, les étreintes et les
+              mots doux que je te dois.
             </p>
           </div>
 
@@ -262,6 +330,14 @@
                 </p>
               </article>
             </div>
+          </div>
+
+          <div class="reunion-photo-wrap" aria-hidden="true">
+            <img
+              class="reunion-photo"
+              src="./assets/portal/final.png"
+              alt="Stella et Patt réunis"
+            />
           </div>
 
           <div class="actions">

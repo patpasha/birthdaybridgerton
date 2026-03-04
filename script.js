@@ -9,8 +9,13 @@ const locationButtons = [...document.querySelectorAll(".location-card")];
 const clueStatus = document.getElementById("clue-status");
 const locationStatus = document.getElementById("location-status");
 const celebrateButton = document.getElementById("celebrate-button");
+const revealPanel = document.querySelector(".reveal-panel");
+const reunionPhotoWrap = document.querySelector(".reunion-photo-wrap");
 const stage = document.querySelector(".birthday-stage");
-const introPanel = document.querySelector('.intro-panel');
+const introPanel = document.querySelector(".intro-panel");
+const portalButton = document.getElementById("portal-button");
+const entryPortal = document.getElementById("entry-portal");
+const portalDoorframe = document.getElementById("portal-doorframe");
 const effectsLayer = document.getElementById("effects-layer");
 const fireworksLayer = document.getElementById("fireworks-layer");
 const petalLayer = document.getElementById("petal-layer");
@@ -46,11 +51,30 @@ function restartIntroConstellation() {
   introPanel.classList.add("is-animating");
 }
 
+function openPortal() {
+  if (!stage || stage.classList.contains("portal-open")) {
+    return;
+  }
+
+  stage.classList.add("portal-open");
+  stage.classList.remove("is-locked");
+  restartIntroConstellation();
+
+  window.setTimeout(() => {
+    entryPortal?.setAttribute("hidden", "true");
+  }, 1200);
+}
+
 function showPanel(index) {
   activePanel = index;
   panels.forEach((panel, panelIndex) => {
     panel.classList.toggle("is-active", panelIndex === index);
   });
+
+  if (index !== 3) {
+    revealPanel?.classList.remove("show-reunion-photo");
+    reunionPhotoWrap?.setAttribute("aria-hidden", "true");
+  }
 
   if (index === 0) {
     restartIntroConstellation();
@@ -453,11 +477,44 @@ locationButtons.forEach((button) => {
 celebrateButton?.addEventListener("click", (event) => {
   const point = getEventPoint(event, celebrateButton);
   const scale = getCelebrationScale();
+  revealPanel?.classList.add("show-reunion-photo");
+  reunionPhotoWrap?.setAttribute("aria-hidden", "false");
   createShockwave(point.x, point.y, "rgba(255, 225, 168, 0.92)");
   createBurst(point.x, point.y, palettes[1], Math.round(32 * scale), 140 * scale);
   createPetalBurst(point.x, point.y, Math.round(28 * scale), 150 * scale);
   createHeartBurst(point.x, point.y, Math.round(14 * scale), 150 * scale, 200 * scale);
   launchCelebrationSequence();
+});
+
+portalButton?.addEventListener("click", (event) => {
+  handleBurstClick(event);
+  createShockwave(
+    window.innerWidth * 0.5,
+    window.innerHeight * 0.46,
+    "rgba(255, 225, 168, 0.92)",
+  );
+  openPortal();
+});
+
+portalDoorframe?.addEventListener("click", () => {
+  createShockwave(
+    window.innerWidth * 0.5,
+    window.innerHeight * 0.46,
+    "rgba(255, 225, 168, 0.92)",
+  );
+  openPortal();
+});
+
+portalDoorframe?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    createShockwave(
+      window.innerWidth * 0.5,
+      window.innerHeight * 0.46,
+      "rgba(255, 225, 168, 0.92)",
+    );
+    openPortal();
+  }
 });
 
 window.addEventListener("resize", () => {
