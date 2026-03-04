@@ -1,0 +1,1242 @@
+:root {
+  --bg-night: #08101d;
+  --bg-ink: #15263f;
+  --ink: #fff8f1;
+  --muted: rgba(255, 248, 241, 0.82);
+  --rose: #f0a7c2;
+  --blush: #ffdfe8;
+  --cream: #fff3e2;
+  --gold: #e7cb85;
+  --mint: #b5ead6;
+  --panel: rgba(20, 22, 46, 0.58);
+  --panel-strong: rgba(33, 27, 53, 0.72);
+  --panel-border: rgba(255, 233, 207, 0.26);
+  --shadow: 0 28px 90px rgba(4, 6, 17, 0.52);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 188, 218, 0.18), transparent 26%),
+    radial-gradient(circle at 85% 14%, rgba(171, 239, 220, 0.14), transparent 22%),
+    radial-gradient(circle at 50% 100%, rgba(251, 229, 196, 0.12), transparent 36%),
+    linear-gradient(160deg, var(--bg-night), #10203a 44%, var(--bg-ink));
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.birthday-stage {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.shell {
+  position: relative;
+  z-index: 4;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.panel {
+  display: none;
+  position: relative;
+  z-index: 4;
+  width: min(1060px, 100%);
+  min-height: min(86vh, 820px);
+  padding: 34px;
+  border: 1px solid var(--panel-border);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 223, 233, 0.16), transparent 28%),
+    radial-gradient(circle at right center, rgba(181, 234, 214, 0.08), transparent 30%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+}
+
+.panel::before,
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.panel::before {
+  border: 1px solid rgba(255, 241, 223, 0.08);
+}
+
+.panel::after {
+  inset: auto 18px 18px auto;
+  width: 160px;
+  height: 160px;
+  background:
+    radial-gradient(circle, rgba(255, 230, 236, 0.18) 0 18%, transparent 19%),
+    radial-gradient(circle, rgba(255, 213, 223, 0.18) 0 12%, transparent 13%),
+    radial-gradient(circle, rgba(255, 242, 218, 0.12) 0 8%, transparent 9%);
+  background-size: 44px 44px, 32px 32px, 24px 24px;
+  background-position: 0 0, 18px 14px, 30px 32px;
+  opacity: 0.32;
+}
+
+.panel.is-active {
+  display: grid;
+  gap: 22px;
+  align-content: center;
+  animation: fade-up 600ms ease;
+}
+
+.intro-panel.is-active {
+  align-content: start;
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: 14px;
+}
+
+.intro-panel .lede {
+  font-size: 1rem;
+  line-height: 1.18;
+  max-width: 46rem;
+}
+
+.hunt-panel.is-active {
+  align-content: start;
+  grid-template-rows: auto auto auto auto auto auto;
+  gap: 10px;
+}
+
+.reveal-panel.is-active {
+  align-content: start;
+  grid-template-rows: auto auto auto auto 1fr auto;
+  gap: 12px;
+}
+
+.hunt-panel h2 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+}
+
+.hunt-panel .lede {
+  font-size: 0.94rem;
+  line-height: 1.14;
+  max-width: none;
+}
+
+.date-pill,
+.eyebrow,
+.card-title,
+.clue-index,
+.ledger-title {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.date-pill {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  z-index: 5;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 251, 244, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 248, 241, 0.08);
+  color: var(--cream);
+  font-size: 0.78rem;
+  backdrop-filter: blur(16px);
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 0.78rem;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(3.6rem, 9vw, 7rem);
+}
+
+h2 {
+  font-size: clamp(2.8rem, 7vw, 5rem);
+}
+
+h1 span {
+  display: block;
+  margin-top: 4px;
+  font-family: "Great Vibes", cursive;
+  font-size: 1.14em;
+  font-weight: 400;
+  color: var(--blush);
+  text-shadow: 0 0 22px rgba(255, 212, 226, 0.18);
+}
+
+.lede,
+.panel-copy,
+.card-copy,
+.clue-card span:last-child,
+.ledger-copy {
+  max-width: 42rem;
+  margin: 0;
+  font-size: clamp(1.04rem, 1.8vw, 1.38rem);
+  line-height: 1.32;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.btn {
+  appearance: none;
+  position: relative;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 22px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease,
+    background 180ms ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  color: #37162f;
+  background: linear-gradient(125deg, var(--rose), var(--gold));
+  box-shadow: 0 16px 34px rgba(231, 180, 188, 0.3);
+}
+
+.btn-secondary {
+  color: var(--ink);
+  background: rgba(255, 248, 241, 0.08);
+  border: 1px solid rgba(255, 248, 241, 0.14);
+}
+
+.constellation-card,
+.riddle-box,
+.final-card,
+.teaser-card {
+  position: relative;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 246, 235, 0.14);
+  background:
+    linear-gradient(145deg, rgba(255, 224, 233, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.constellation-card,
+.riddle-box,
+.final-card {
+  display: grid;
+  gap: 20px;
+  padding: 22px;
+}
+
+.constellation-card {
+  grid-template-columns: minmax(280px, 320px) 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.constellation {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+  display: grid;
+  gap: 8px;
+}
+
+.constellation-card > div:first-child {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+}
+
+.constellation-pisces {
+  filter: drop-shadow(0 0 18px rgba(255, 241, 194, 0.12));
+}
+
+.constellation-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.pisces-path {
+  fill: none;
+  stroke: rgba(255, 239, 192, 0.92);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 8px rgba(255, 236, 180, 0.35));
+  opacity: 0;
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+}
+
+.intro-panel.is-animating .pisces-path {
+  animation: reveal-pisces 1900ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards 260ms;
+}
+
+.pisces-star {
+  fill: #fffdf8;
+  stroke: #ffe9a8;
+  stroke-width: 1.8;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.intro-panel.is-animating .pisces-star {
+  animation: star-appear 460ms ease forwards;
+}
+
+.star-1 { animation-delay: 0ms; }
+.star-2 { animation-delay: 150ms; }
+.star-3 { animation-delay: 300ms; }
+.star-4 { animation-delay: 450ms; }
+.star-5 { animation-delay: 600ms; }
+.star-6 { animation-delay: 750ms; }
+.star-7 { animation-delay: 900ms; }
+.star-8 { animation-delay: 1050ms; }
+
+.constellation-name {
+  margin: 0;
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pisces-traits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pisces-traits span {
+  padding: 5px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 248, 241, 0.14);
+  background: rgba(255, 248, 241, 0.06);
+  color: var(--cream);
+  font-size: 0.74rem;
+  line-height: 1;
+  opacity: 0;
+}
+
+.intro-panel.is-animating .pisces-traits span {
+  animation: trait-appear 420ms ease forwards;
+}
+
+.pisces-traits span:nth-child(1) { animation-delay: 1320ms; }
+.pisces-traits span:nth-child(2) { animation-delay: 1400ms; }
+.pisces-traits span:nth-child(3) { animation-delay: 1480ms; }
+.pisces-traits span:nth-child(4) { animation-delay: 1560ms; }
+.pisces-traits span:nth-child(5) { animation-delay: 1640ms; }
+.pisces-traits span:nth-child(6) { animation-delay: 1720ms; }
+
+.nickname-row,
+.teaser-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.nickname-row span {
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: rgba(255, 244, 241, 0.08);
+  border: 1px solid rgba(255, 244, 241, 0.14);
+  color: var(--blush);
+  font-size: 1rem;
+}
+
+.teaser-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.teaser-card {
+  padding: 20px;
+}
+
+.clue-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.clue-card {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 246, 235, 0.14);
+  border-radius: 26px;
+  background:
+    linear-gradient(155deg, rgba(255, 226, 235, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    background 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.clue-card:hover,
+.clue-card.is-found {
+  transform: translateY(-5px);
+  border-color: rgba(231, 203, 133, 0.5);
+  background:
+    linear-gradient(155deg, rgba(255, 229, 236, 0.14), rgba(255, 255, 255, 0.05)),
+    rgba(255, 255, 255, 0.06);
+  box-shadow: 0 18px 34px rgba(4, 6, 17, 0.24);
+}
+
+.clue-card strong {
+  font-size: 1.36rem;
+}
+
+.hunt-panel .clue-card {
+  gap: 6px;
+  padding: 14px;
+}
+
+.hunt-panel .clue-card strong {
+  font-size: 1.08rem;
+}
+
+.hunt-panel .clue-card span:last-child {
+  font-size: 0.88rem;
+  line-height: 1.14;
+}
+
+.riddle-box {
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+}
+
+.hunt-status {
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 16px 18px;
+}
+
+.hunt-status .card-title,
+.hunt-status .card-copy {
+  max-width: none;
+}
+
+.gift-ledger {
+  display: grid;
+  gap: 12px;
+}
+
+.location-game {
+  display: grid;
+  gap: 10px;
+  padding: 16px 18px;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 246, 235, 0.14);
+  background:
+    linear-gradient(145deg, rgba(255, 224, 233, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.location-card {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid rgba(255, 246, 235, 0.14);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.location-card:hover,
+.location-card.is-selected {
+  transform: translateY(-3px);
+  border-color: rgba(231, 203, 133, 0.44);
+  background: rgba(255, 246, 235, 0.08);
+  box-shadow: 0 14px 28px rgba(4, 6, 17, 0.18);
+}
+
+.location-card.is-correct {
+  border-color: rgba(181, 234, 214, 0.62);
+  box-shadow:
+    0 0 0 1px rgba(181, 234, 214, 0.34),
+    0 16px 30px rgba(10, 35, 28, 0.24);
+}
+
+.location-card.is-wrong {
+  border-color: rgba(240, 167, 194, 0.55);
+}
+
+.location-card strong {
+  font-size: 0.98rem;
+}
+
+.location-card span,
+.location-status {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.16;
+}
+
+.hunt-panel .actions {
+  margin-top: auto;
+}
+
+.ledger-item {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 12px;
+  align-items: start;
+  opacity: 0.55;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.ledger-item.is-on {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.ledger-mark {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  transition: background 220ms ease, box-shadow 220ms ease;
+}
+
+.ledger-item.is-on .ledger-mark {
+  background: linear-gradient(135deg, #fff1a4, #ffcad9);
+  box-shadow: 0 0 14px rgba(255, 227, 156, 0.5);
+}
+
+.ledger-title {
+  margin: 0 0 2px;
+  color: var(--cream);
+  font-size: 0.74rem;
+}
+
+.ledger-copy {
+  font-size: 1rem;
+}
+
+.progress-stars {
+  display: flex;
+  gap: 14px;
+}
+
+.progress-star {
+  width: 18px;
+  aspect-ratio: 1;
+  clip-path: polygon(50% 0%, 62% 38%, 100% 38%, 69% 59%, 82% 100%, 50% 75%, 18% 100%, 31% 59%, 0% 38%, 38% 38%);
+  background: rgba(255, 255, 255, 0.18);
+  transition: background 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+
+.progress-star.is-on {
+  background: linear-gradient(120deg, #fff4b0, #ffd2dd);
+  box-shadow: 0 0 18px rgba(255, 228, 138, 0.55);
+  transform: scale(1.04);
+}
+
+.final-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.love-note {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 246, 235, 0.12);
+  background: rgba(255, 248, 241, 0.05);
+}
+
+.love-note p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.2;
+}
+
+.final-item {
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 246, 235, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.sky,
+.stars,
+.aurora,
+.flower-garland,
+.floral-frame,
+.petal-layer,
+.effects-layer,
+.fireworks-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.petal-layer {
+  z-index: 5;
+}
+
+.effects-layer {
+  z-index: 7;
+}
+
+.fireworks-layer {
+  z-index: 8;
+}
+
+.sky-a {
+  background: radial-gradient(circle at 18% 22%, rgba(255, 202, 226, 0.15), transparent 24%);
+}
+
+.sky-b {
+  background: radial-gradient(circle at 84% 18%, rgba(181, 234, 214, 0.14), transparent 30%);
+}
+
+.stars {
+  background-image:
+    radial-gradient(circle at 8% 20%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 16% 78%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 26% 40%, rgba(255, 255, 255, 0.85) 0 1.2px, transparent 1.6px),
+    radial-gradient(circle at 40% 12%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 53% 66%, rgba(255, 255, 255, 0.76) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 68% 30%, rgba(255, 255, 255, 0.84) 0 1.1px, transparent 1.6px),
+    radial-gradient(circle at 82% 58%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 92% 16%, rgba(255, 255, 255, 0.94) 0 1.2px, transparent 1.7px);
+  opacity: 0.88;
+  animation: twinkle 9s linear infinite;
+}
+
+.aurora-a {
+  background: radial-gradient(circle at 18% 78%, rgba(169, 239, 219, 0.16), transparent 34%);
+  filter: blur(34px);
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+.aurora-b {
+  background: radial-gradient(circle at 82% 34%, rgba(243, 174, 206, 0.16), transparent 32%);
+  filter: blur(44px);
+  animation: drift 16s ease-in-out infinite alternate-reverse;
+}
+
+.flower-garland {
+  opacity: 0.85;
+}
+
+.flower-garland::before,
+.flower-garland::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 100%;
+  background:
+    radial-gradient(circle, rgba(255, 219, 232, 0.9) 0 13px, transparent 14px),
+    radial-gradient(circle, rgba(255, 243, 214, 0.84) 0 10px, transparent 11px),
+    radial-gradient(circle, rgba(198, 244, 226, 0.84) 0 8px, transparent 9px),
+    radial-gradient(circle, rgba(255, 194, 218, 0.78) 0 6px, transparent 7px);
+  background-size: 86px 120px, 74px 104px, 66px 94px, 52px 84px;
+  filter: blur(0.4px);
+}
+
+.garland-left::before {
+  top: -14px;
+  left: -40px;
+  transform: rotate(-7deg);
+}
+
+.garland-left::after {
+  top: 30px;
+  left: 34px;
+  opacity: 0.7;
+}
+
+.garland-right::before {
+  top: -10px;
+  right: -26px;
+  transform: rotate(8deg);
+}
+
+.garland-right::after {
+  top: 80px;
+  right: 46px;
+  opacity: 0.66;
+}
+
+.floral-frame::before,
+.floral-frame::after {
+  content: "";
+  position: absolute;
+  border-radius: 58% 42% 64% 36% / 44% 60% 40% 56%;
+}
+
+.floral-frame::before {
+  width: 240px;
+  height: 240px;
+  border: 2px solid rgba(255, 221, 231, 0.14);
+  box-shadow: inset 0 0 0 12px rgba(255, 255, 255, 0.02);
+}
+
+.floral-frame::after {
+  width: 180px;
+  height: 180px;
+  border: 2px solid rgba(231, 203, 133, 0.14);
+}
+
+.floral-top-left::before { top: 28px; left: 34px; }
+.floral-top-left::after { top: 104px; left: 188px; }
+.floral-bottom-right::before { right: 42px; bottom: 42px; }
+.floral-bottom-right::after { right: 196px; bottom: 152px; }
+
+.petal {
+  position: absolute;
+  top: -12vh;
+  width: 18px;
+  height: 28px;
+  border-radius: 80% 10% 70% 20%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.72), transparent 34%),
+    linear-gradient(180deg, rgba(255, 225, 236, 0.95), rgba(240, 167, 194, 0.88));
+  opacity: 0.68;
+  transform-origin: center;
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.petal.petal-mint {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.68), transparent 34%),
+    linear-gradient(180deg, rgba(218, 255, 246, 0.9), rgba(170, 230, 208, 0.82));
+}
+
+.petal.petal-cream {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.68), transparent 34%),
+    linear-gradient(180deg, rgba(255, 248, 228, 0.92), rgba(231, 203, 133, 0.82));
+}
+
+.burst-particle,
+.firework-particle,
+.shockwave-ring,
+.royal-petal,
+.heart-particle {
+  position: absolute;
+  will-change: transform, opacity;
+}
+
+.burst-particle {
+  border-radius: 999px;
+  width: 18px;
+  height: 18px;
+  filter: blur(0.2px) saturate(1.2);
+  animation: burst-out 1300ms cubic-bezier(0.18, 0.72, 0.25, 1) forwards;
+}
+
+.firework-particle {
+  border-radius: 999px;
+  width: 14px;
+  height: 14px;
+  filter: blur(0.1px) saturate(1.3);
+  animation: firework-out 2300ms cubic-bezier(0.14, 0.82, 0.2, 1) forwards;
+}
+
+.shockwave-ring {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 240, 193, 0.85);
+  box-shadow:
+    0 0 30px rgba(255, 233, 168, 0.55),
+    inset 0 0 18px rgba(255, 249, 228, 0.28);
+  animation: shockwave-out 1500ms cubic-bezier(0.12, 0.72, 0.2, 1) forwards;
+}
+
+.royal-petal {
+  width: 24px;
+  height: 34px;
+  border-radius: 80% 10% 70% 20%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), transparent 34%),
+    linear-gradient(180deg, rgba(255, 244, 241, 1), rgba(240, 167, 194, 0.88));
+  box-shadow: 0 0 24px rgba(255, 212, 226, 0.38);
+  animation: royal-petal-out 2600ms cubic-bezier(0.14, 0.76, 0.18, 1) forwards;
+}
+
+.heart-particle {
+  font-size: 28px;
+  line-height: 1;
+  color: #ffd4de;
+  text-shadow:
+    0 0 18px rgba(255, 184, 208, 0.75),
+    0 0 34px rgba(255, 230, 170, 0.4);
+  animation: heart-float-out 3200ms cubic-bezier(0.16, 0.78, 0.2, 1) forwards;
+}
+
+.celebration .panel {
+  box-shadow:
+    0 28px 100px rgba(255, 225, 177, 0.22),
+    0 0 120px rgba(255, 213, 195, 0.12);
+}
+
+.celebration .stars {
+  animation-duration: 2.2s;
+  filter: saturate(1.6) brightness(1.15);
+}
+
+.celebration .aurora-a,
+.celebration .aurora-b {
+  filter: blur(54px) saturate(1.4);
+}
+
+.celebration::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: 6;
+  background:
+    radial-gradient(circle at center, rgba(255, 243, 214, 0.24), transparent 26%),
+    radial-gradient(circle at 30% 40%, rgba(255, 194, 218, 0.16), transparent 20%),
+    radial-gradient(circle at 70% 35%, rgba(181, 234, 214, 0.14), transparent 22%);
+  pointer-events: none;
+  animation: celebration-glow 3800ms ease-out forwards;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-pisces {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 520;
+  }
+
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes star-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.24);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes trait-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+  }
+}
+
+@keyframes twinkle {
+  50% {
+    opacity: 0.58;
+  }
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9);
+  }
+
+  50% {
+    transform: translate3d(var(--petal-drift), 54vh, 0) rotate(180deg) scale(1);
+  }
+
+  100% {
+    transform: translate3d(calc(var(--petal-drift) * -0.6), 112vh, 0) rotate(340deg) scale(0.92);
+  }
+}
+
+@keyframes burst-out {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0.95;
+  }
+
+  100% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.1);
+    opacity: 0;
+  }
+}
+
+@keyframes firework-out {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.1);
+    opacity: 0;
+  }
+}
+
+@keyframes shockwave-out {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0.95;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(14);
+    opacity: 0;
+  }
+}
+
+@keyframes royal-petal-out {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.7);
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) rotate(420deg) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes celebration-glow {
+  0% {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.14);
+  }
+}
+
+@keyframes heart-float-out {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4) rotate(-8deg);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.15) rotate(14deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .panel {
+    min-height: calc(100vh - 42px);
+    padding: 82px 22px 22px;
+  }
+
+  .riddle-box,
+  .final-grid,
+  .teaser-row {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-panel .constellation-card {
+    grid-template-columns: minmax(220px, 250px) 1fr;
+  }
+
+  .clue-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flower-garland {
+    opacity: 0.64;
+  }
+}
+
+@media (max-width: 640px) {
+  .shell {
+    padding: 14px;
+  }
+
+  .panel {
+    min-height: calc(100svh - 28px);
+    padding: 78px 16px 16px;
+    gap: 14px;
+    border-radius: 28px;
+  }
+
+  .hunt-panel.is-active {
+    gap: 8px;
+    grid-template-rows: auto auto auto auto auto auto;
+  }
+
+  .panel::after {
+    width: 112px;
+    height: 112px;
+    opacity: 0.22;
+  }
+
+  .date-pill {
+    top: 12px;
+    width: calc(100% - 28px);
+    text-align: center;
+    font-size: 0.68rem;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 11vw, 4.2rem);
+  }
+
+  h2 {
+    font-size: clamp(2.15rem, 9vw, 3.2rem);
+  }
+
+  .hunt-panel h2 {
+    font-size: clamp(1.85rem, 8vw, 2.4rem);
+  }
+
+  .lede,
+  .panel-copy,
+  .card-copy,
+  .clue-card span:last-child,
+  .ledger-copy {
+    font-size: 0.96rem;
+    line-height: 1.24;
+  }
+
+  .hunt-panel .lede {
+    font-size: 0.84rem;
+    line-height: 1.1;
+  }
+
+  .constellation-card,
+  .riddle-box,
+  .final-card,
+  .teaser-card,
+  .clue-card,
+  .love-note,
+  .location-game,
+  .location-card {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .intro-panel .constellation-card {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+  }
+
+  .hunt-status {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .constellation {
+    max-width: 220px;
+  }
+
+  .constellation-name {
+    font-size: 0.72rem;
+  }
+
+  .pisces-traits {
+    gap: 6px;
+  }
+
+  .pisces-traits span {
+    font-size: 0.72rem;
+    padding: 5px 8px;
+  }
+
+  .nickname-row {
+    gap: 8px;
+  }
+
+  .nickname-row span {
+    padding: 7px 11px;
+    font-size: 0.82rem;
+  }
+
+  .clue-card {
+    gap: 8px;
+  }
+
+  .clue-card strong {
+    font-size: 1rem;
+  }
+
+  .location-card strong {
+    font-size: 0.95rem;
+  }
+
+  .location-card span,
+  .location-status {
+    font-size: 0.8rem;
+  }
+
+  .actions {
+    margin-top: auto;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px 18px;
+  }
+
+  .flower-garland,
+  .floral-frame {
+    opacity: 0.52;
+  }
+
+  .petal {
+    opacity: 0.5;
+  }
+
+  .shockwave-ring {
+    width: 28px;
+    height: 28px;
+  }
+
+  .royal-petal {
+    width: 18px;
+    height: 28px;
+  }
+
+  .heart-particle {
+    font-size: 22px;
+  }
+
+  .love-note p {
+    font-size: 0.88rem;
+    line-height: 1.16;
+  }
+}

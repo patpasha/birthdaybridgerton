@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joyeux anniversaire Stella</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="birthday-stage">
+      <div class="sky sky-a"></div>
+      <div class="sky sky-b"></div>
+      <div class="stars"></div>
+      <div class="aurora aurora-a"></div>
+      <div class="aurora aurora-b"></div>
+      <div class="flower-garland garland-left"></div>
+      <div class="flower-garland garland-right"></div>
+      <div class="floral-frame floral-top-left"></div>
+      <div class="floral-frame floral-bottom-right"></div>
+      <div class="petal-layer" id="petal-layer" aria-hidden="true"></div>
+      <div class="effects-layer" id="effects-layer" aria-hidden="true"></div>
+      <div
+        class="fireworks-layer"
+        id="fireworks-layer"
+        aria-hidden="true"
+      ></div>
+
+      <div class="shell">
+        <p class="date-pill">
+          4 mars • Saison des Poissons • Anniversaire de Stella
+        </p>
+
+        <section class="intro-panel panel is-active" data-panel="0">
+          <div class="eyebrow">Gazette de Lady Cosmos</div>
+          <h1>
+            Joyeux anniversaire,
+            <span>Stella</span>
+          </h1>
+          <p class="lede">
+            Ma zimboulette, c'est ton m'anniversaire et la haute société a
+            décrété qu'aucune étoile et aucune fleur ne pouvaient rivaliser avec
+            toi. Mini Jannah m'a volé la vedette au bureau mais moi je viens
+            avec le wawawakidiwa de Lady Whistledown qui t'invite à entrer dans
+            la serre royale !
+          </p>
+
+          <div class="constellation-card">
+            <div
+              class="constellation constellation-pisces"
+              aria-label="Constellation des Poissons"
+            >
+              <svg
+                class="constellation-svg"
+                viewBox="0 0 320 210"
+                aria-hidden="true"
+              >
+                <path
+                  class="pisces-path"
+                  d="M44 54 L90 68 L138 50 L185 84 L244 132 L176 148 L100 160 L56 132"
+                />
+                <circle class="pisces-star star-1" cx="44" cy="54" r="5" />
+                <circle class="pisces-star star-2" cx="90" cy="68" r="5" />
+                <circle class="pisces-star star-3" cx="138" cy="50" r="5" />
+                <circle class="pisces-star star-4" cx="185" cy="84" r="5" />
+                <circle class="pisces-star star-5" cx="244" cy="132" r="5" />
+                <circle class="pisces-star star-6" cx="176" cy="148" r="5" />
+                <circle class="pisces-star star-7" cx="100" cy="160" r="5" />
+                <circle class="pisces-star star-8" cx="56" cy="132" r="5" />
+              </svg>
+              <p class="constellation-name">Constellation des Poissons</p>
+              <div class="pisces-traits" aria-label="Qualités du poisson">
+                <span>Intuitive</span>
+                <span>Douce</span>
+                <span>Rêveuse</span>
+                <span>Créative</span>
+                <span>Romantique</span>
+                <span>Empathique</span>
+              </div>
+            </div>
+            <div>
+              <p class="card-title">Profil astral</p>
+              <p class="card-copy">
+                Tendre, rêveuse, magnétique. Une héroïne Bridgerton égarée dans
+                une nébuleuse fleurie, ce qui explique beaucoup de choses. Love
+                u
+              </p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" data-next>
+              Entrer dans la serre royale
+            </button>
+            <button class="btn btn-secondary" data-jump="3">
+              Aller à la proclamation finale
+            </button>
+          </div>
+        </section>
+
+        <section class="story-panel panel" data-panel="1">
+          <div class="eyebrow">Billet de Lady Whistledown cosmique</div>
+          <h2>Bienvenue ma très chère Stella,</h2>
+          <p class="lede">
+            Il court dans la haute société une rumeur délicieuse: une certaine
+            Stella, née un 4 mars sous la bannière des Poissons, aurait reçu
+            pour son anniversaire deux présents concoctés de façon parfaitement
+            céleste et divinatoire par votre zimboula malgré la distance.
+          </p>
+          <p class="panel-copy">
+            Votre humble chroniqueuse ne saurait dévoiler ces secrets si vite.
+            Il faudra mériter l'indice final, traverser cette serre étoilée,
+            puis retrouver le lieu où l'on a mis ces merveilles à l'abri pour
+            les découvrir.
+          </p>
+
+          <div class="nickname-row" aria-label="Surnoms affectueux">
+            <span>ma zimboulette</span>
+            <span>ma patata</span>
+            <span>ma wawawakidiwa</span>
+            <span>ma pimpoula</span>
+            <span>ma ninette</span>
+          </div>
+
+          <div class="teaser-row">
+            <article class="teaser-card">
+              <p class="card-title">Promesse n°1</p>
+              <p class="card-copy">
+                Le premier présent a le pouvoir de faire tomber la nuit étoilée
+                dans les moments sombres.
+              </p>
+            </article>
+            <article class="teaser-card">
+              <p class="card-title">Promesse n°2</p>
+              <p class="card-copy">
+                Le second s'annonce sous une robe dorée, mondaine et
+                terriblement gourmande.
+              </p>
+            </article>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-secondary" data-prev>Retour</button>
+            <button class="btn btn-primary" data-next>
+              Commencer la chasse
+            </button>
+          </div>
+        </section>
+
+        <section class="hunt-panel panel" data-panel="2">
+          <div class="eyebrow">Chasse au trésor</div>
+          <h2>Déchiffre les indices de la duchesse des étoiles</h2>
+          <p class="lede">
+            Trois indices, un seul bon lieu, et aucun spoiler sur les cadeaux.
+          </p>
+
+          <div class="clue-grid">
+            <button class="clue-card" data-clue="1">
+              <span class="clue-index">I</span>
+              <strong>Indice astral</strong>
+              <span>
+                Le premier présent fait entrer la nuit étoilée dans une pièce.
+              </span>
+            </button>
+            <button class="clue-card" data-clue="2">
+              <span class="clue-index">II</span>
+              <strong>Indice gourmand</strong>
+              <span>
+                Le second se croque, fond, et adore se montrer en doré.
+              </span>
+            </button>
+            <button class="clue-card" data-clue="3">
+              <span class="clue-index">III</span>
+              <strong>Indice de palais</strong>
+              <span>
+                Le trésor n'attend pas paisiblement dans l'appartement mais dans
+                une jungle amazonienne.
+              </span>
+            </button>
+          </div>
+
+          <div class="hunt-status riddle-box" aria-live="polite">
+            <p class="card-title">Livre des suppositions</p>
+            <p id="clue-status" class="card-copy">
+              Appuie sur les 3 indices pour compléter le bouquet des secrets.
+            </p>
+            <div class="progress-stars">
+              <span class="progress-star"></span>
+              <span class="progress-star"></span>
+              <span class="progress-star"></span>
+            </div>
+          </div>
+
+          <div class="location-game">
+            <p class="card-title">Où faut-il aller ?</p>
+            <div class="location-grid">
+              <button class="location-card" data-location="salon">
+                <strong>Salon?</strong>
+                <span>Peut-être trop évident?</span>
+              </button>
+              <button class="location-card" data-location="terrasse">
+                <strong>Terrasse?</strong>
+                <span>Trop exposée?</span>
+              </button>
+              <button class="location-card" data-location="conciergerie">
+                <strong>A l'accueil?</strong>
+                <span>Peut-être le bon pari?</span>
+              </button>
+            </div>
+            <p id="location-status" class="location-status">
+              Choisis le lieu où la haute société aurait déposé ton trésor.
+            </p>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-secondary" data-prev>Retour</button>
+            <button class="btn btn-primary" data-next disabled>
+              Dévoiler l'ordonnance finale
+            </button>
+          </div>
+        </section>
+
+        <section class="reveal-panel panel" data-panel="3">
+          <div class="eyebrow">Annonce officielle</div>
+          <h2>Ton trésor t'attend à l'accueil !</h2>
+          <p class="lede">
+            Lady Pitichat: Je suis loin de toi aujourd'hui mais tu es toujours à côté de mon petit coeur. 
+            Je pense très fort à toi et j'aurai aimé pouvoir me réveiller et te serrer dans mes bras. 
+            C'est pour bientôt, je t'aime 3x1000 ❤️‍🔥!
+          </p>
+
+          <div class="love-note">
+            <p>
+              Ma patata, ma ninette, ma wawawakidiwa: tu me manques fort et tu
+              rends mes journées plus belles, même à distance.
+            </p>
+            <p>
+              Va chercher ton trésor, pense à moi en souriant, et garde un peu
+              de place pour tous les bisous que je te dois.
+            </p>
+          </div>
+
+          <div class="final-card">
+            <div class="final-grid">
+              <article class="final-item">
+                <p class="card-title">Présent n°1</p>
+                <p class="card-copy">
+                  Il fera briller les murs et le plafond comme une petite
+                  galaxie privée le temps de mon absence.
+                </p>
+              </article>
+              <article class="final-item">
+                <p class="card-title">Présent n°2</p>
+                <p class="card-copy">
+                  Il cache un plaisir doré et croustillant et très peu
+                  mystérieux une fois ouvert.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-secondary" data-prev>Revenir</button>
+            <button class="btn btn-primary" id="celebrate-button">
+              Lancer le Bouquet final
+            </button>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
